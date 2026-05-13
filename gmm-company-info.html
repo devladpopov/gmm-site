@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GMM Ltd: Company Information</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'DM Sans', Arial, Helvetica, sans-serif; color: #333; background: #fff; line-height: 1.6; max-width: 800px; margin: 0 auto; padding: 2rem; }
+
+        :root {
+            --ucl-dark: #361a54;
+            --ucl-bright: #993bff;
+            --ucl-pale: #eedeff;
+            --grey-bg: #f5f4f7;
+            --text-light: #666;
+        }
+
+        .header {
+            border-bottom: 3px solid var(--ucl-dark);
+            padding-bottom: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        .header h1 {
+            font-size: 1.5rem;
+            color: var(--ucl-dark);
+        }
+        .header p {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-top: 0.3rem;
+        }
+
+        h2 {
+            font-size: 1.15rem;
+            color: var(--ucl-dark);
+            margin: 1.8rem 0 0.8rem;
+            padding-bottom: 0.4rem;
+            border-bottom: 2px solid var(--ucl-bright);
+        }
+        h3 {
+            font-size: 0.95rem;
+            color: var(--ucl-dark);
+            margin: 1rem 0 0.4rem;
+        }
+        p { margin-bottom: 0.7rem; font-size: 0.9rem; }
+        ul { margin: 0.4rem 0 0.8rem 1.5rem; font-size: 0.9rem; }
+        li { margin-bottom: 0.3rem; }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 160px 1fr;
+            gap: 0.3rem 1rem;
+            background: var(--grey-bg);
+            padding: 1.2rem;
+            margin: 1rem 0;
+            font-size: 0.88rem;
+        }
+        .info-grid dt { font-weight: 700; color: var(--ucl-dark); }
+        .info-grid dd { color: #333; }
+
+        .note {
+            background: var(--ucl-pale);
+            padding: 1rem 1.2rem;
+            border-left: 4px solid var(--ucl-bright);
+            font-size: 0.88rem;
+            margin: 1.5rem 0;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+            margin: 1rem 0;
+        }
+        @media (max-width: 640px) {
+            .product-grid { grid-template-columns: 1fr; }
+        }
+        .product-card {
+            background: var(--grey-bg);
+            border-top: 3px solid var(--ucl-bright);
+            padding: 1.2rem;
+        }
+        .product-card h3 { margin-top: 0; }
+        .product-card p { font-size: 0.85rem; }
+
+        .footer {
+            margin-top: 3rem;
+            padding-top: 1rem;
+            border-top: 1px solid #ddd;
+            font-size: 0.78rem;
+            color: var(--text-light);
+        }
+
+        @media print {
+            body { max-width: none; padding: 1cm; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>Global Mindset Marketing Ltd</h1>
+    <p>Company Information. Prepared for UCL Partnership Review, May 2026</p>
+</div>
+
+<div class="note">
+    <strong>Purpose of this document</strong><br>
+    This page provides UCL with a concise company profile for Global Mindset Marketing Limited,
+    including corporate details, technical capability, existing research infrastructure,
+    and the company's proposed role in a potential grant-funded consortium.
+</div>
+
+<h2>Company Details</h2>
+
+<dl class="info-grid">
+    <dt>Legal Name</dt>
+    <dd>Global Mindset Marketing Limited</dd>
+
+    <dt>Company Number</dt>
+    <dd>15738438</dd>
+
+    <dt>Incorporated</dt>
+    <dd>England &amp; Wales</dd>
+
+    <dt>Registered Office</dt>
+    <dd>Bartle House, 9 Oxford Court, M2 3WQ, Bishopsgate, United Kingdom</dd>
+
+    <dt>Phone</dt>
+    <dd>+44 7934 892954</dd>
+
+    <dt>Director</dt>
+    <dd>Aleksandra Griazina</dd>
+
+    <dt>CTO</dt>
+    <dd>Vladislav Popov</dd>
+
+    <dt>Website</dt>
+    <dd>globalmindsetmarketing.co.uk</dd>
+
+    <dt>VAT Registered</dt>
+    <dd>Yes (VAT number available on request)</dd>
+
+    <dt>Sector</dt>
+    <dd>Data services, AI, education technology</dd>
+</dl>
+
+<p class="muted" style="font-size:0.82rem; color:#666; margin-top:0.5rem;">
+    Companies House record:
+    <a href="https://find-and-update.company-information.service.gov.uk/company/15738438"
+       style="color:var(--ucl-bright);">
+       find-and-update.company-information.service.gov.uk/company/15738438</a>
+</p>
+
+<h2>Company Background</h2>
+
+<p>
+    GMM Ltd is a UK-registered company that has operated in data-driven services since its
+    incorporation. The company's primary business has been in <strong>education marketing
+    and university recruitment</strong>, operating the platform
+    <a href="https://studyqa.com" style="color: var(--ucl-bright);">StudyQA.com</a>, a
+    service connecting international students with universities worldwide.
+    StudyQA serves <strong>over 4 million annual users</strong> across 100+ countries
+    and partners with hundreds of universities globally. Through this platform, GMM has built
+    deep expertise in large-scale data collection, processing, analytics, and product
+    development serving an international user base.
+</p>
+
+<p>
+    In 2025, GMM began a strategic pivot towards <strong>AI and financial data applications</strong>.
+    The company identified an opportunity to apply its data engineering capabilities to UK
+    Companies House filings, specifically the challenge of extracting structured financial
+    data from millions of PDF company accounts that are not available in machine-readable form.
+</p>
+
+<p>
+    This led to GMM applying for and being awarded a <strong>UKRI AIRR compute grant</strong>
+    (20,000 GPU hours on the
+    <a href="https://isambard.ac.uk/" style="color: var(--ucl-bright);">Isambard-AI</a>
+    supercomputer at the University of Bristol) to research document AI approaches for
+    financial document understanding. The AIRR award
+    (<a href="https://portal-airr.isambard.ac.uk/" style="color: var(--ucl-bright);">reference
+    0261-4941-0401-1</a>) is active from April to July 2026.
+    UKRI approval of the AIRR compute allocation provides external validation of the
+    project's research relevance and technical feasibility.
+</p>
+
+<h2>Products and Services</h2>
+
+<p>
+    In addition to the Companies House dataset project, GMM operates and maintains
+    several live products across different sectors. These demonstrate the company's
+    technical capacity to build, deploy, and scale production systems.
+</p>
+
+<div class="product-grid">
+    <div class="product-card">
+        <h3><a href="https://studyqa.com" style="color: var(--ucl-dark); text-decoration: none;">StudyQA.com</a></h3>
+        <p><strong>Education Technology</strong></p>
+        <p>
+            International student recruitment platform serving over 4 million annual users
+            across 100+ countries. Connects prospective students with universities worldwide.
+            Operational since 2013. Includes search, comparison tools, application tracking,
+            and analytics for partner universities.
+        </p>
+    </div>
+    <div class="product-card">
+        <h3><a href="https://motready.co.uk" style="color: var(--ucl-dark); text-decoration: none;">MOTReady.co.uk</a></h3>
+        <p><strong>Automotive SaaS (UK)</strong></p>
+        <p>
+            MOT reminder and customer retention platform for UK garages. Integrates with the
+            DVSA MOT History API (UK Government) via OAuth2 to provide automated reminders
+            to vehicle owners. Live API, deployed infrastructure, active outreach to
+            independent garages across the UK.
+        </p>
+    </div>
+    <div class="product-card">
+        <h3><a href="https://globalmindsetmarketing.co.uk/tokentoad/" style="color: var(--ucl-dark); text-decoration: none;">TokenToad</a></h3>
+        <p><strong>Developer Tools</strong></p>
+        <p>
+            Chrome browser extension for real-time monitoring of AI API spending.
+            Tracks usage across Claude, OpenAI and other LLM platforms.
+            Published on the Chrome Web Store.
+        </p>
+    </div>
+    <div class="product-card">
+        <h3>UK Company Accounts AI Dataset</h3>
+        <p><strong>AI / Financial Data (current project)</strong></p>
+        <p>
+            Open national dataset from Companies House filings.
+            815K iXBRL records parsed, 3.5M PDFs downloaded, financial scoring model
+            (AUC 0.9987). Funded by UKRI AIRR compute grant. This is the subject
+            of the proposed DSIT consortium with UCL.
+        </p>
+    </div>
+</div>
+
+<h2>Technical Capabilities and Progress</h2>
+
+<p>
+    Since receiving the AIRR compute grant, GMM has made significant progress on the
+    Companies House data project:
+</p>
+
+<ul>
+    <li><strong>iXBRL parsing:</strong> 815,000 structured filings from the Companies House
+    bulk download have been parsed into a normalised data format, serving as ground truth
+    for model training and validation.</li>
+
+    <li><strong>PDF acquisition:</strong> Approximately 3.5 million PDF filings have been
+    downloaded from Companies House via an automated pipeline, representing an estimated
+    48% incremental coverage beyond the iXBRL dataset.</li>
+
+    <li><strong>Financial scoring model:</strong> A LightGBM classifier trained on the
+    extracted iXBRL features achieves AUC 0.9987 for company financial health prediction,
+    validating the quality of the structured data.</li>
+
+    <li><strong>Document AI pilot:</strong> Feasibility of field extraction from PDF
+    filings has been confirmed using a Donut-class (vision-transformer) baseline model.</li>
+</ul>
+
+<h2>Team</h2>
+
+<h3>Vladislav Popov, CTO and Technical Lead</h3>
+<p>
+    PhD, University of York. Technical lead responsible for architecture, data engineering,
+    and ML pipeline development. Built and scaled the StudyQA platform (4M+ annual users),
+    MOTReady automotive SaaS, and the TokenToad developer tool. Designed and built the
+    Companies House data acquisition system, iXBRL parser, and financial scoring model.
+    Prepared and was awarded the UKRI AIRR compute grant. Background in software engineering,
+    data-driven product development, and full-stack system design.
+</p>
+
+<h3>Aleksandra Griazina, Director</h3>
+<p>
+    PhD, University College London. Company director responsible for business operations,
+    strategic direction, and institutional partnerships. Background in business management
+    and education services. Manages company governance, financial reporting, and partnership
+    strategy. Named Project Lead on the UKRI AIRR compute grant.
+</p>
+
+<h3>Staffing Plan (conditional on funding)</h3>
+<p>
+    The DSIT grant would fund the recruitment of a full project team: Senior ML Engineer,
+    Data Engineer, Backend/API Developer, and Data Annotation and QA Specialists (2 FTE).
+    This is standard practice for grant-funded projects. The team is hired after the award,
+    not before. Letters of Intent from candidates will be included in the full application.
+</p>
+
+<h2>Relevance to the Sovereign AI Proposal</h2>
+
+<p>
+    GMM brings to the consortium:
+</p>
+
+<ul>
+    <li>An active UKRI AIRR compute allocation (20,000 GPU hours on Isambard-AI)</li>
+    <li>Existing data infrastructure: 815K parsed iXBRL records and approximately 3.5M downloaded PDFs</li>
+    <li>A working data pipeline and demonstrated technical feasibility</li>
+    <li>A portfolio of live, production-grade products across multiple sectors</li>
+    <li>Experience integrating with UK Government APIs (DVSA, Companies House)</li>
+    <li>UK-incorporated SME positioned to act as industry lead or technical delivery partner, subject to the eligibility rules of the relevant DSIT funding call</li>
+    <li>Commitment to open-access dataset release under permissive licence</li>
+</ul>
+
+<p>
+    The academic partnership with UCL provides the research governance, methodology validation,
+    and academic credibility required for a nationally significant dataset project. GMM's
+    role is technical delivery. UCL's role is research leadership and quality assurance.
+</p>
+
+<h2>Verifiable References</h2>
+
+<dl class="info-grid">
+    <dt>Companies House</dt>
+    <dd><a href="https://find-and-update.company-information.service.gov.uk/company/15738438" style="color: var(--ucl-bright);">Company record 15738438</a></dd>
+
+    <dt>StudyQA Platform</dt>
+    <dd><a href="https://studyqa.com" style="color: var(--ucl-bright);">studyqa.com</a> (4M+ annual users, operational since 2013)</dd>
+
+    <dt>MOTReady</dt>
+    <dd><a href="https://motready.co.uk" style="color: var(--ucl-bright);">motready.co.uk</a> (UK automotive SaaS, DVSA API integration)</dd>
+
+    <dt>TokenToad</dt>
+    <dd><a href="https://globalmindsetmarketing.co.uk/tokentoad/" style="color: var(--ucl-bright);">Chrome Web Store extension</a> (AI API spending tracker)</dd>
+
+    <dt>UKRI AIRR Grant</dt>
+    <dd><a href="https://portal-airr.isambard.ac.uk/" style="color: var(--ucl-bright);">portal-airr.isambard.ac.uk</a> (Award 0261-4941-0401-1)</dd>
+
+    <dt>Isambard-AI</dt>
+    <dd><a href="https://isambard.ac.uk/" style="color: var(--ucl-bright);">isambard.ac.uk</a> (University of Bristol HPC facility)</dd>
+
+    <dt>GMM Website</dt>
+    <dd><a href="https://globalmindsetmarketing.co.uk" style="color: var(--ucl-bright);">globalmindsetmarketing.co.uk</a></dd>
+</dl>
+
+<div class="footer">
+    <p>Global Mindset Marketing Limited. Prepared for UCL partnership review. Not intended for public distribution.</p>
+    <p>Contact: Vladislav Popov, vlad@globalmindsetmarketing.co.uk | +44 7934 892954</p>
+</div>
+
+</body>
+</html>
