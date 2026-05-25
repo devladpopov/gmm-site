@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Teleprompter for Android - Read Scripts While Recording Video</title>
+    <meta name="description" content="Free teleprompter app for Android. Semi-transparent text overlay on any camera app. No subscriptions, no limits, no account needed.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --dark: #361a54;
+            --accent: #993bff;
+            --accent-light: #b96fff;
+            --pale: #eedeff;
+            --cream: #faf8fc;
+            --white: #ffffff;
+            --text: #2d2d3a;
+            --text-light: #6b6b7b;
+            --border: #e8e4ed;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+            color: var(--text);
+            background: var(--white);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* ---- HERO ---- */
+        .hero {
+            background: linear-gradient(160deg, #2a1243 0%, var(--dark) 40%, #4a2270 100%);
+            color: var(--white);
+            padding: 4rem 0 3.5rem;
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 100px;
+            padding: 0.35rem 1rem;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.03em;
+            margin-bottom: 1.5rem;
+            color: var(--pale);
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hero h1 span {
+            color: var(--accent-light);
+        }
+
+        .hero-tagline {
+            font-size: 1.15rem;
+            color: rgba(255, 255, 255, 0.78);
+            max-width: 540px;
+            margin: 0 auto 2rem;
+            line-height: 1.55;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.65rem;
+            background: var(--accent);
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.05rem;
+            padding: 0.9rem 2rem;
+            border-radius: 12px;
+            transition: background 0.2s;
+        }
+
+        .hero-cta:hover {
+            background: var(--accent-light);
+        }
+
+        .hero-cta svg {
+            width: 24px;
+            height: 24px;
+            flex-shrink: 0;
+        }
+
+        .hero-free {
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.55);
+        }
+
+        /* ---- SECTION SHARED ---- */
+        section {
+            padding: 4rem 0;
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 0.6rem;
+        }
+
+        .section-title {
+            font-size: 1.85rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 0.6rem;
+            letter-spacing: -0.015em;
+        }
+
+        .section-subtitle {
+            font-size: 1rem;
+            color: var(--text-light);
+            max-width: 560px;
+            line-height: 1.55;
+        }
+
+        .section-header {
+            margin-bottom: 2.5rem;
+        }
+
+        .section-header--center {
+            text-align: center;
+        }
+
+        .section-header--center .section-subtitle {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ---- FEATURES ---- */
+        .features {
+            background: var(--cream);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .feature-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 1.8rem 1.5rem;
+        }
+
+        .feature-icon {
+            width: 44px;
+            height: 44px;
+            background: var(--pale);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .feature-icon svg {
+            width: 22px;
+            height: 22px;
+            color: var(--dark);
+        }
+
+        .feature-card h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 0.4rem;
+        }
+
+        .feature-card p {
+            font-size: 0.88rem;
+            color: var(--text-light);
+            line-height: 1.5;
+        }
+
+        /* ---- HOW IT WORKS ---- */
+        .how-it-works {
+            background: var(--white);
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            counter-reset: step;
+        }
+
+        .step {
+            text-align: center;
+            counter-increment: step;
+            position: relative;
+        }
+
+        .step-number {
+            width: 52px;
+            height: 52px;
+            background: linear-gradient(135deg, var(--dark), #4a2270);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin: 0 auto 1.2rem;
+        }
+
+        .step h3 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 0.4rem;
+        }
+
+        .step p {
+            font-size: 0.88rem;
+            color: var(--text-light);
+            line-height: 1.5;
+            max-width: 260px;
+            margin: 0 auto;
+        }
+
+        /* connector lines between steps */
+        .step:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            top: 26px;
+            left: calc(50% + 36px);
+            width: calc(100% - 72px);
+            height: 2px;
+            background: var(--border);
+        }
+
+        /* ---- FREE BANNER ---- */
+        .free-banner {
+            background: linear-gradient(135deg, var(--dark), #4a2270);
+            color: var(--white);
+            text-align: center;
+            padding: 3.5rem 0;
+        }
+
+        .free-banner h2 {
+            font-size: 1.7rem;
+            font-weight: 700;
+            margin-bottom: 0.6rem;
+        }
+
+        .free-banner p {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.75);
+            margin-bottom: 1.8rem;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .free-banner .hero-cta {
+            background: var(--white);
+            color: var(--dark);
+        }
+
+        .free-banner .hero-cta:hover {
+            background: var(--pale);
+        }
+
+        .free-checks {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .free-checks span {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.7);
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .free-checks svg {
+            width: 16px;
+            height: 16px;
+            color: #6ee7b7;
+            flex-shrink: 0;
+        }
+
+        /* ---- FOOTER ---- */
+        .footer {
+            background: #1c0e2e;
+            color: rgba(255, 255, 255, 0.6);
+            padding: 2.5rem 0;
+            font-size: 0.85rem;
+        }
+
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-brand {
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 0.35rem;
+            font-size: 0.95rem;
+        }
+
+        .footer a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer a:hover {
+            color: var(--accent-light);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1.8rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-divider {
+            border: none;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin: 1.5rem 0;
+        }
+
+        .footer-bottom {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        /* ---- RESPONSIVE ---- */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 3rem 0 2.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-tagline {
+                font-size: 1.02rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .steps {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+
+            .step:not(:last-child)::after {
+                display: none;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .free-banner h2 {
+                font-size: 1.4rem;
+            }
+
+            .free-checks {
+                gap: 1rem;
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 900px) {
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="container">
+        <div class="hero-badge">Android App</div>
+        <h1>Free <span>Teleprompter</span><br>for Android</h1>
+        <p class="hero-tagline">Read your script while recording video. Semi-transparent text overlay on top of any camera app. No subscriptions, no limits.</p>
+        <a href="https://play.google.com/store/apps/details?id=com.vlad.teleprompter" class="hero-cta">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            Get it on Google Play
+        </a>
+        <p class="hero-free">100% free. No account needed.</p>
+    </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features">
+    <div class="container">
+        <div class="section-header section-header--center">
+            <span class="section-label">Features</span>
+            <h2 class="section-title">Everything you need, nothing you don't</h2>
+            <p class="section-subtitle">A focused teleprompter that does one thing and does it well. No bloat, no upsells.</p>
+        </div>
+
+        <div class="features-grid">
+            <!-- 1 -->
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                </div>
+                <h3>Transparent Overlay</h3>
+                <p>Semi-transparent scrolling text on top of your camera or any other app. Read your lines while looking straight at the lens.</p>
+            </div>
+            <!-- 2 -->
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+                </div>
+                <h3>Touch Controls</h3>
+                <p>Swipe up and down to scroll. Swipe left and right to adjust speed. Tap to pause and resume. Intuitive and simple.</p>
+            </div>
+            <!-- 3 -->
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                </div>
+                <h3>Fully Adjustable</h3>
+                <p>Change text size, overlay height, and scroll speed to match your pace and setup. Get it exactly right for you.</p>
+            </div>
+            <!-- 4 -->
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+                </div>
+                <h3>Works With Any Camera</h3>
+                <p>Use it with your phone's built-in camera, or any third-party camera app. The overlay floats on top of everything.</p>
+            </div>
+            <!-- 5 -->
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+                </div>
+                <h3>No Account, No Internet</h3>
+                <p>Everything works offline. No sign-up, no login, no cloud. Your scripts stay on your device, private and secure.</p>
+            </div>
+            <!-- 6 -->
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                </div>
+                <h3>Completely Free</h3>
+                <p>No hidden fees, no freemium limits, no in-app purchases. Every feature is available to everyone, always.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-it-works">
+    <div class="container">
+        <div class="section-header section-header--center">
+            <span class="section-label">How it works</span>
+            <h2 class="section-title">Ready in three steps</h2>
+            <p class="section-subtitle">From install to recording in under a minute.</p>
+        </div>
+
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Type Your Script</h3>
+                <p>Open the app and paste or type the text you want to read. That's it -- no formatting needed.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>Open Your Camera</h3>
+                <p>Switch to your camera app (or any other app you want the text to appear over).</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>Start the Overlay</h3>
+                <p>Tap play. The text scrolls on screen while you record. Swipe to control speed and scrolling.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="free-banner">
+    <div class="container">
+        <h2>Start recording better videos today</h2>
+        <p>No credit card. No sign-up. Just install and go.</p>
+        <a href="https://play.google.com/store/apps/details?id=com.vlad.teleprompter" class="hero-cta">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            Download Free on Google Play
+        </a>
+        <div class="free-checks">
+            <span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                No subscriptions
+            </span>
+            <span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                No account needed
+            </span>
+            <span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                Works offline
+            </span>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-inner">
+            <div>
+                <div class="footer-brand">Teleprompter</div>
+                <div>by <a href="https://globalmindsetmarketing.co.uk">Global Mindset Marketing Limited</a></div>
+            </div>
+            <div class="footer-links">
+                <a href="/teleprompter-privacy.html">Privacy Policy</a>
+                <a href="mailto:vlad@globalmindsetmarketing.co.uk">Contact</a>
+                <a href="https://globalmindsetmarketing.co.uk">globalmindsetmarketing.co.uk</a>
+            </div>
+        </div>
+        <hr class="footer-divider">
+        <div class="footer-bottom">
+            Developer: Vladislav Popov. Google Play and the Google Play logo are trademarks of Google LLC.
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
