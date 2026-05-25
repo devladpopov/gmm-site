@@ -176,51 +176,81 @@
             margin-right: auto;
         }
 
-        /* ---- FEATURES ---- */
+        /* ---- FEATURES (Bouncy Cards) ---- */
         .features {
             background: var(--cream);
         }
 
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(12, 1fr);
             gap: 1.5rem;
         }
 
+        .features-grid .feature-card:nth-child(1) { grid-column: span 4; }
+        .features-grid .feature-card:nth-child(2) { grid-column: span 8; }
+        .features-grid .feature-card:nth-child(3) { grid-column: span 8; }
+        .features-grid .feature-card:nth-child(4) { grid-column: span 4; }
+        .features-grid .feature-card:nth-child(5) { grid-column: span 4; }
+        .features-grid .feature-card:nth-child(6) { grid-column: span 8; }
+
         .feature-card {
-            background: var(--white);
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            padding: 1.8rem 1.5rem;
-        }
-
-        .feature-icon {
-            width: 44px;
-            height: 44px;
             background: var(--pale);
-            border-radius: 10px;
+            border-radius: 1rem;
+            padding: 1.8rem 1.5rem;
+            min-height: 300px;
             display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1rem;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+            transition: transform 250ms cubic-bezier(0.25, 1, 0.5, 1);
+            cursor: default;
         }
 
-        .feature-icon svg {
-            width: 22px;
-            height: 22px;
-            color: var(--dark);
+        .feature-card:hover {
+            transform: scale(0.95) rotate(-1deg);
         }
 
         .feature-card h3 {
-            font-size: 1rem;
-            font-weight: 600;
+            font-size: 1.15rem;
+            font-weight: 700;
             color: var(--dark);
-            margin-bottom: 0.4rem;
+            margin-bottom: auto;
         }
 
-        .feature-card p {
+        .feature-panel {
+            border-radius: 0.875rem;
+            padding: 1.25rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.85rem;
+            transform: translateY(8px) rotate(0deg);
+            transition: transform 250ms cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .feature-card:hover .feature-panel {
+            transform: translateY(4px) rotate(2deg);
+        }
+
+        .feature-panel--purple  { background: linear-gradient(135deg, #993bff, #7c3aed); }
+        .feature-panel--amber   { background: linear-gradient(135deg, #f59e0b, #ea580c); }
+        .feature-panel--emerald { background: linear-gradient(135deg, #10b981, #059669); }
+        .feature-panel--pink    { background: linear-gradient(135deg, #ec4899, #e11d48); }
+        .feature-panel--blue    { background: linear-gradient(135deg, #3b82f6, #6366f1); }
+        .feature-panel--teal    { background: linear-gradient(135deg, #14b8a6, #0891b2); }
+
+        .feature-panel svg {
+            width: 24px;
+            height: 24px;
+            color: rgba(255, 255, 255, 0.9);
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .feature-panel p {
             font-size: 0.88rem;
-            color: var(--text-light);
+            color: rgba(255, 255, 255, 0.92);
             line-height: 1.5;
         }
 
@@ -406,6 +436,19 @@
                 gap: 1rem;
             }
 
+            .features-grid .feature-card:nth-child(1),
+            .features-grid .feature-card:nth-child(2),
+            .features-grid .feature-card:nth-child(3),
+            .features-grid .feature-card:nth-child(4),
+            .features-grid .feature-card:nth-child(5),
+            .features-grid .feature-card:nth-child(6) {
+                grid-column: span 1;
+            }
+
+            .feature-card {
+                min-height: 240px;
+            }
+
             .steps {
                 grid-template-columns: 1fr;
                 gap: 2.5rem;
@@ -431,6 +474,15 @@
         @media (min-width: 769px) and (max-width: 900px) {
             .features-grid {
                 grid-template-columns: repeat(2, 1fr);
+            }
+
+            .features-grid .feature-card:nth-child(1),
+            .features-grid .feature-card:nth-child(2),
+            .features-grid .feature-card:nth-child(3),
+            .features-grid .feature-card:nth-child(4),
+            .features-grid .feature-card:nth-child(5),
+            .features-grid .feature-card:nth-child(6) {
+                grid-column: span 1;
             }
         }
     </style>
@@ -462,53 +514,53 @@
         </div>
 
         <div class="features-grid">
-            <!-- 1 -->
+            <!-- 1: Transparent Overlay (4-col) -->
             <div class="feature-card">
-                <div class="feature-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-                </div>
                 <h3>Transparent Overlay</h3>
-                <p>Semi-transparent scrolling text on top of your camera or any other app. Read your lines while looking straight at the lens.</p>
-            </div>
-            <!-- 2 -->
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+                <div class="feature-panel feature-panel--purple">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                    <p>Semi-transparent scrolling text on top of your camera or any other app. Read your lines while looking straight at the lens.</p>
                 </div>
+            </div>
+            <!-- 2: Touch Controls (8-col) -->
+            <div class="feature-card">
                 <h3>Touch Controls</h3>
-                <p>Swipe up and down to scroll. Swipe left and right to adjust speed. Tap to pause and resume. Intuitive and simple.</p>
-            </div>
-            <!-- 3 -->
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                <div class="feature-panel feature-panel--amber">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+                    <p>Swipe up and down to scroll. Swipe left and right to adjust speed. Tap to pause and resume. Intuitive and simple.</p>
                 </div>
+            </div>
+            <!-- 3: Fully Adjustable (8-col) -->
+            <div class="feature-card">
                 <h3>Fully Adjustable</h3>
-                <p>Change text size, overlay height, and scroll speed to match your pace and setup. Get it exactly right for you.</p>
-            </div>
-            <!-- 4 -->
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+                <div class="feature-panel feature-panel--emerald">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                    <p>Change text size, overlay height, and scroll speed to match your pace and setup. Get it exactly right for you.</p>
                 </div>
+            </div>
+            <!-- 4: Works With Any Camera (4-col) -->
+            <div class="feature-card">
                 <h3>Works With Any Camera</h3>
-                <p>Use it with your phone's built-in camera, or any third-party camera app. The overlay floats on top of everything.</p>
-            </div>
-            <!-- 5 -->
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+                <div class="feature-panel feature-panel--pink">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+                    <p>Use it with your phone's built-in camera, or any third-party camera app. The overlay floats on top of everything.</p>
                 </div>
+            </div>
+            <!-- 5: No Account, No Internet (4-col) -->
+            <div class="feature-card">
                 <h3>No Account, No Internet</h3>
-                <p>Everything works offline. No sign-up, no login, no cloud. Your scripts stay on your device, private and secure.</p>
-            </div>
-            <!-- 6 -->
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                <div class="feature-panel feature-panel--blue">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+                    <p>Everything works offline. No sign-up, no login, no cloud. Your scripts stay on your device, private and secure.</p>
                 </div>
+            </div>
+            <!-- 6: Completely Free (8-col) -->
+            <div class="feature-card">
                 <h3>Completely Free</h3>
-                <p>No hidden fees, no freemium limits, no in-app purchases. Every feature is available to everyone, always.</p>
+                <div class="feature-panel feature-panel--teal">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                    <p>No hidden fees, no freemium limits, no in-app purchases. Every feature is available to everyone, always.</p>
+                </div>
             </div>
         </div>
     </div>
